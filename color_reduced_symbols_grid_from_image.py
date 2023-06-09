@@ -20,7 +20,7 @@ paper_formats= [ ['A0',[841,1180]],['A1',[594,840]],['A2',[420,594]], ['A3',[297
                  ['small_square',[50,50]], ['big_square',[1000,1000]] ]
 
 # !!!!!!! choose a paper format !!!!!!!!
-format = paper_formats[3] # A3
+format = paper_formats[sys.argv[2]]
 # !!!!!!! number of colors in palette !!!!!!!!
 nr_of_colors = 64 
 # !!!!!!! set this between 2.5 and 2.8 for round or squere drils !!!!!!!!
