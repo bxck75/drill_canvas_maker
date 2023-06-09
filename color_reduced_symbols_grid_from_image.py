@@ -6,7 +6,7 @@ os.system('python setup.py install')
 import matplotlib.pyplot as plt
 import seaborn as sns
 plt.style.use('seaborn-white')
-%matplotlib inline
+#%matplotlib inline
 import numpy as np
 import requests
 from ast import Param
@@ -22,9 +22,9 @@ paper_formats= [ ['A0',[841,1180]],['A1',[594,840]],['A2',[420,594]], ['A3',[297
 # !!!!!!! choose a paper format !!!!!!!!
 format = paper_formats[3] # A3
 # !!!!!!! number of colors in palette !!!!!!!!
-nr_of_colors = "64" 
+nr_of_colors = 64 
 # !!!!!!! set this between 2.5 and 2.8 for round or squere drils !!!!!!!!
-cel_size = 2.5
+cell_size = 2.5
 # to have a clean edge
 cells_away_from_edge = 2
 
@@ -32,8 +32,8 @@ for i in range(len(paper_formats) -1):
   # calculate and split image and grid sizes
   format_name =  paper_formats[i][0]
   paper_format = paper_formats[i][1]
-  max_x_cells = paper_format[1] / cel_size
-  max_y_cells = paper_format[0] / cel_siz
+  max_x_cells = paper_format[1] / cell_size
+  max_y_cells = paper_format[0] / cell_size
   #Store all values in arrays
   paper_formats[i].append([str(round(max_y_cells - cells_away_from_edge)), str(round(max_x_cells - cells_away_from_edge))])
   paper_formats[i].append(str(round((max_y_cells - cells_away_from_edge) * (max_x_cells - cells_away_from_edge))))
