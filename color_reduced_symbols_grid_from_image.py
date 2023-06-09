@@ -70,10 +70,10 @@ except requests.exceptions.Timeout:
 except requests.exceptions.TooManyRedirects:
   # Tell the user their URL was bad and try a different one
   print("TooManyRedirects!")
-except requests.exceptions.RequestException as e:
+except requests.exceptions.RequestException :
   # catastrophic error. bail.
   print("RequestException", end="")
-  #print(e)
+ 
   #raise SystemExit(e)
 
 with open(input_image, 'wb') as f:
