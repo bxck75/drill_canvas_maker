@@ -1,4 +1,4 @@
-import os
+import os, sys
 os.chdir('/content')
 os.system('git clone https://github.com/bxck75/diamond-art.git')
 os.chdir('/content/diamond-art')
@@ -42,7 +42,8 @@ canvas_res = [format[1][1], format[1][0]] #resolution w/h
 grid_res = [format[2][1], format[2][0]] #grid w/h 
 
 # 'https://assets.rebelmouse.io/media-library/junichi-shimodaira-s-rod-riguez.jpg?id=31159124&width={int(canvas_res[0])}&height={int(canvas_res[0])}&quality=100'
-input_img_url = 'https://as1.ftcdn.net/v2/jpg/05/57/06/50/1000_F_557065092_MLOigaEyhzfgKr5xxsn98IbRRaopL0Aw.jpg' #@param {type:"string"}
+input_img_url = sys.argv[1]
+#'https://as1.ftcdn.net/v2/jpg/05/57/06/50/1000_F_557065092_MLOigaEyhzfgKr5xxsn98IbRRaopL0Aw.jpg' #@param {type:"string"}
 
 name, ext= os.path.splitext(input_img_url)
 
@@ -88,6 +89,8 @@ if im.mode in ('RGBA', 'LA'):
     im = background
 
 
+
+im.save(r"/content/diamondcanvas/images/org_art_url.png")
 im.convert("RGB").save(r"/content/diamondcanvas/images/RGBA_art_url.png")
 # switch to RGBA image
 input_image = '/content/diamondcanvas/images/RGBA_art_url.png'
@@ -99,9 +102,10 @@ out = im.convert('P', palette=Image.ADAPTIVE, colors=nr_of_colors)
 #get name and ext
 name, ext= os.path.splitext(input_image)
 # morph inputname into outputname
-output_image = input_image.replace(name, name + '_'+ str(clrs)+'_'+ str(grid_res[0] +'x'+ grid_res[1]))
+output_image = input_image.replace(name, name + '_'+ str(nr_of_colors)+'_'+ str(grid_res[0] +'x'+ grid_res[1]))
+
 #resize and save
-resized = out.resize((int(canvas_res[0]),int(canvas_res[1])))
+resized = out.resize((int(grid_res[0]),int(grid_res[1])))
 resized.save(output_image)
 
 # build drill canvas
